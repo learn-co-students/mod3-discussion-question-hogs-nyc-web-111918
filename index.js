@@ -24,27 +24,39 @@ function transitionPage(el, groupOut, groupIn) {
   }, LONGESTPOSSIBLE)
 }
 /*************************************************************************/
+// var timeoutID = scope.setTimeout(function[, delay, param1, param2, ...]);
+// var timeoutID = scope.setTimeout(function[, delay]);
+// var timeoutID = scope.setTimeout(code[, delay]);
 
 function delayedFadeOut(div, range) {
-  // Your solution here
-  fadeOut(div)
+  setTimeout(() => {
+    fadeOut(div)
+    // console.log(range, 'delayedFadeOut Completed')
+  }, range)
 }
 
 function delayedFadeIn(div, range) {
-  // Your solution here
-  fadeIn(div)
+  setTimeout(() => {
+    fadeIn(div)
+    // console.log(range, 'delayedFadeIn Completed')
+  }, range)
 }
 
 function fadeAllOut(el, group) {
-  // Your solution here
+  // console.log('fadeAllOut begins')
+  // console.log(group)
   group.forEach(div => {
-    delayedFadeOut(div)
+    if (div == el) {
+      delayedFadeOut(div, LONGRANGE)
+    } else {
+      delayedFadeOut(div, SHORTRANGE * Math.random())
+    }
   })
 }
 
 function fadeAllIn(group) {
   // Your solution here
   group.forEach(div => {
-    delayedFadeIn(div)
+      delayedFadeIn(div, SHORTRANGE * Math.random())
   })
 }
